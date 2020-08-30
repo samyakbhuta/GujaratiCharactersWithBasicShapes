@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gujarati Unicode Characters with Basic Shapes</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <style>
+    .firstArc {
+      transform: rotate(-90deg);
+    }
+
+    .firstLineSegment {
+      position: relative;
+      left: -100px;
+      top: 100px;
+    }
+
+    .secondArc {
+      transform: rotate(90deg);
+      position: relative;
+      left: -200px;
+      top: 100px;
+    }
+  </style>
+
+  <body>
+    <h1>Basic Shapes</h1>
+    <svg height="100" width="100">
+      <path d="M 0 50, A 50 50, 0, 0 1, 100 50" fill="transparent" stroke="black" />
+    </svg>
+    <svg height="100" width="100">
+      <line x1="0" y1="0" x2="100" y2="0"  fill="transparent" stroke="black" />
+    </svg>
+
+    <h1>Derivatives</h1>
+
+    <h2>ક ( A single SVG Element for all basic shapes)</h2>
+    <ul>
+      <li>Positioning of individula basic shape is done using <code>transform</code> attribute of SVG.</li>
+      <li>We have to know the eventual height and width of the character we are working with.</li>
+      <li>The styles are part of the SVG Element, thus it is kind of scopped for that particular letter</li>
+      <li>You can easily put another character next to it. Tried with ક, but keep testing it with other Characters</li>
+      <li>Check how is it is to do diacritical marks around. E.g. hrasv e, dird e, hrasv u, dirdh u etc</li>
+      <li>Check how is it is to do join two letters togather</li>
+      <li>So far, this approch seems to be simpler then the second one.</li>
+    </ul>
+    <svg height="200" width="100">
+      <style>
+        * {
+          fill: transparent;
+          stroke: black;
+          stroke-width: 1px;
+        }
+
+        path {
+          d: path("M 0 50, A 50 50, 0, 0 1, 100 50");
+        }
+      </style>
+      <path transform="rotate(-90, 50, 50)"/>
+      <!-- TODO - Check how we can also move x1, y1, x2 and y2 also to css properties -->
+      <line x1="0" y1="0" x2="100" y2="0" transform="translate(0 100)" />
+      <path transform="translate(0 100) rotate(90, 50, 50)" />
+    </svg>
+    
+    <h2>ક (An SVG element per each basic shape)</h2>
+    <ul>
+      <li>Positioning of individula basic shape is done using <code>position</code> and <code>transform</code> directive of CSS.</li>
+    </ul>
+    <svg height="100" width="100" class="firstArc"> 
+      <path d="M 0 50, A 50 50, 0, 0 1, 100 50" fill="transparent" stroke="black" />
+    </svg>
+    <svg height="100" width="100" class="firstLineSegment">
+      <line x1="0" y1="0" x2="100" y2="0" fill="transparent" stroke="black" />
+    </svg>
+    <svg height="100" width="100" class="secondArc"> 
+      <path d="M 0 50, A 50 50, 0, 0 1, 100 50" fill="transparent" stroke="black" />
+    </svg>
+  </body>
+</html>
